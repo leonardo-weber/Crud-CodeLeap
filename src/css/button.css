@@ -1,0 +1,12 @@
+.button {
+    width: 111px;
+    height: 33px;  
+    position: absolute;
+    left: 1074px;
+    top: 450px;
+    background-color: black;
+    color: white;
+    font-weight: 700;
+
+}
+

@@ -1,0 +1,53 @@
+.crudView {
+    height: 328px;
+    width: 723px;
+    display: table;
+    margin-top: 100px;
+    margin-left: 38px;
+    border: 1px solid #000;
+    position: relative;
+    top: 370px;
+}
+
+.crudView p {
+    margin-top: 50px;
+    margin-left: 35px;
+}
+
+.iconEdit {
+    height: 50px;
+    width: 80px;
+    margin-left: 530px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconDelete {
+    height: 50px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonDelete {
+    background-color: black;
+    color: white;
+    border: black;
+    height: 22.5px;
+    width: 17.5px;
+}
+
+.buttonEdit {
+    background-color: black;
+    color: white;
+    border: black;
+    height: 22.5px;
+    width: 17.5px;
+}
+
+#datetime {
+    position: absolute;
+    left: 555px;
+}

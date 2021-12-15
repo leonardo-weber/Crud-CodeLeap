@@ -1,0 +1,74 @@
+.createPost {
+    width: 723px;
+    height: 349px;
+    position: absolute;
+    top: 124px;
+    left: 38px;
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.createPost h1 {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+#titleLabel {
+    position: absolute;
+    top: 90px;
+    left: 30px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#title {
+    width: 659px;
+    height: 28px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: absolute;
+    top: 115px;
+    left: 30px;
+}
+
+#contentLabel {
+    position: absolute;
+    left: 31px;
+    top: 160px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+
+#content {
+    width: 659px;
+    height: 74px;
+    position: absolute;
+    top: 185px;
+    left: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+}
+
+#button {
+    position: absolute;
+    left: 578px;
+    top: 287px;
+    width: 111px;
+    height: 33px;
+    background-color: black;
+    color: white;
+    font-weight: 700;
+}
+
+#user {
+    position: absolute;
+    top: 50px;
+    left: 5px;
+    color: #777;
+}
