@@ -56,6 +56,7 @@ export default function CrudOperations () {
 
        if (data.title === '' || data.content === '') {
            e.preventDefault ()
+           alert('You need to type in both fields in order to make a post')
        } else {
            axios.post(databaseURL, data)
            .then(resp => {
@@ -74,7 +75,9 @@ export default function CrudOperations () {
 
         if (data.title === '' || data.content === '') {
             e.preventDefault()
-        } else {
+            alert('You need to type in both fields in order to make a post')
+        } 
+        else {
            axios.patch(`${databaseURL}${identifier}/`, data )
             .then(resp => {
                 const newList = updateList(resp.data)
@@ -87,15 +90,20 @@ export default function CrudOperations () {
     }   
     
     function deleteData(post) { 
- 
-     axios.delete(`https://dev.codeleap.co.uk/careers/${post.id}/`) 
-         .then(resp => {
-             const newList = updateList(post, false)
-             setList(newList)
-             setPost(initialState)
-         })
-         .catch( () => console.log('erro'))
-     }
+
+    if (post.username !== username) {
+        alert('You can only delete a post that you have posted.')
+    } 
+    else {
+        axios.delete(`https://dev.codeleap.co.uk/careers/${post.id}/`) 
+            .then(resp => {
+                const newList = updateList(post, false)
+                setList(newList)
+                setPost(initialState)
+            })
+            .catch( () => console.log('erro'))
+        }
+    }
     
     function updateInputField (e) {  
         setPost({title: e.target.value, content: post.content, username: post.username})
@@ -106,9 +114,15 @@ export default function CrudOperations () {
     }
     
     function loadPost (post) {
-        setButtonName('UPDATE')
-        setPost(post)
-        dispatch(setIdentifier(post.id))
+
+        if (post.username !== username) {
+            alert('You can only edit a post that you have posted.')
+        }
+        else {
+            setButtonName('UPDATE')
+            setPost(post)
+            dispatch(setIdentifier(post.id))
+        }   
    }
     
     function renderData () {

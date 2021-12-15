@@ -1,5 +1,4 @@
 export default function CreateAndUpdate (props) {
-
     return (
         
     <div className="createPost" id = 'create'>
