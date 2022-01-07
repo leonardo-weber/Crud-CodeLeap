@@ -1,74 +1,58 @@
 .createPost {
     width: 723px;
     height: 349px;
-    position: absolute;
-    top: 124px;
-    left: 38px;
-    border: 1px solid #000;
+    border: 1px solid #999;
+    margin: 44px auto 0px auto;
     display: flex;
     flex-direction: column;
 }
 
-.createPost h1 {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    font-size: 22px;
-    font-weight: 700;
+.createPost h4 {
+    margin-top: 23px;
+    margin-left: 30px;
 }
 
-#titleLabel {
-    position: absolute;
-    top: 90px;
-    left: 30px;
-    font-weight: 400;
-    font-size: 16px;
+.createPost #titleLabel {
+    margin-top: 34px;
+    margin-left: 30px;
 }
 
-#title {
+.createPost #inputTitle {
+    margin-top: 7px;
+    margin-left: 30px;
     width: 659px;
     height: 28px;
+    background: #FFFFFF;
+    border: 1px solid #777777;
     box-sizing: border-box;
     border-radius: 4px;
-    position: absolute;
-    top: 115px;
-    left: 30px;
 }
 
-#contentLabel {
-    position: absolute;
-    left: 31px;
-    top: 160px;
-    font-weight: 400;
-    font-size: 16px;
+.createPost #contentLabel {
+    margin-top: 19px;
+    margin-left: 30px;
 }
 
-
-#content {
+.createPost #inputContent {
+    margin-top: 7px;
+    margin-left: 30px;
     width: 659px;
     height: 74px;
-    position: absolute;
-    top: 185px;
-    left: 30px;
+    border: 1px solid #777777;
     box-sizing: border-box;
     border-radius: 4px;
-
 }
 
-#button {
-    position: absolute;
-    left: 578px;
-    top: 287px;
+.createPost #button {
+    margin-top: 25px;
+    margin-left: 578px;
     width: 111px;
     height: 33px;
-    background-color: black;
+    background-color: #000;
     color: white;
-    font-weight: 700;
-}
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
 
-#user {
-    position: absolute;
-    top: 50px;
-    left: 5px;
-    color: #777;
 }

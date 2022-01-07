@@ -90,19 +90,13 @@ export default function CrudOperations () {
     }   
     
     function deleteData(post) { 
-
-    if (post.username !== username) {
-        alert('You can only delete a post that you have posted.')
-    } 
-    else {
         axios.delete(`https://dev.codeleap.co.uk/careers/${post.id}/`) 
             .then(resp => {
                 const newList = updateList(post, false)
                 setList(newList)
                 setPost(initialState)
             })
-            .catch( () => console.log('erro'))
-        }
+            .catch( () => console.log('erro')) 
     }
     
     function updateInputField (e) {  
@@ -114,15 +108,10 @@ export default function CrudOperations () {
     }
     
     function loadPost (post) {
-
-        if (post.username !== username) {
-            alert('You can only edit a post that you have posted.')
-        }
-        else {
-            setButtonName('UPDATE')
-            setPost(post)
-            dispatch(setIdentifier(post.id))
-        }   
+        setButtonName('UPDATE')
+        setPost(post)
+        dispatch(setIdentifier(post.id))
+        
    }
     
     function renderData () {
@@ -131,21 +120,22 @@ export default function CrudOperations () {
             return (
                 <div className = 'crudView'>
                     <Header title = {post.title}>   
-                        <a href="/#create"> 
-                            <div className="iconEdit"> 
-                                <button className='buttonEdit 'onClick={() => loadPost(post)}>  
-                                    <FontAwesomeIcon icon = {faEdit} size='lg' > 
-                                    
-                                    </FontAwesomeIcon> </button> 
-                                </div> 
-                            </a>
-                        <div className="iconDelete"> 
-                            <button className='buttonDelete' onClick={() => deleteData(post)}> 
-                                <FontAwesomeIcon icon={faTrash} size='lg' > 
-                                
-                                </FontAwesomeIcon> 
-                            </button> 
-                        </div>
+                        {username === post.username ? (
+                            <>
+                             <div className="iconEdit">
+                                <button className='buttonEdit ' onClick={() => loadPost(post)}>
+                                    <FontAwesomeIcon icon={faEdit} size='lg'>
+
+                                    </FontAwesomeIcon> </button>
+                            </div>
+                            <div className="iconDelete">
+                                    <button className='buttonDelete' onClick={() => deleteData(post)}>
+                                        <FontAwesomeIcon icon={faTrash} size='lg'>
+
+                                        </FontAwesomeIcon>
+                                    </button>
+                            </div></>
+                        ) : null}
                     </Header> 
 
                     <p id = 'datetime'> {post.created_datetime.substr(0,10) } </p>
