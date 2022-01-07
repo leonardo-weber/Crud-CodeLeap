@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import Crud from './crud'
-import '../css/login.css'
+import '../css/LoginContainer.css'
 import Login from './login';
+import LoginLayout from '../components/LoginLayout';
+import CrudLayout from '../components/CrudLayout';
 import { useSelector } from 'react-redux';
 
 export default function App() {  
@@ -11,9 +13,13 @@ export default function App() {
   return (    
     <>
    {validUsername === true ? (
-        <Crud> </Crud>
+        <CrudLayout>
+          <Crud> </Crud>
+        </CrudLayout>
     ) : (
-      <Login> </Login>
+      <LoginLayout> 
+        <Login> </Login>
+      </LoginLayout>
     )}
   </> 
   );

@@ -6,7 +6,7 @@ import Header from './header'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setIdentifier } from '../redux/userSlice';
-import { useState, useEffect } from 'react/cjs/react.development'
+import { useState, useLayoutEffect } from 'react/cjs/react.development'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
@@ -37,7 +37,7 @@ export default function CrudOperations () {
     
     const databaseURL = "https://dev.codeleap.co.uk/careers/"
     
-    useEffect( () => {
+    useLayoutEffect( () => {
         axios.get(databaseURL)
         .then(resp => setList(resp.data['results']))
         .catch(e => console.log('erro: ', e))

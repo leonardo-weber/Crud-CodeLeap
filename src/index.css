@@ -2,9 +2,4 @@ body {
   background-color: #DDD;
   margin: 0;
   padding: 0;
-  height: 800px;
-  width: 1920px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react/cjs/react.development';
 import { setUsername } from '../redux/userSlice';
-import LoginForm from '../components/LoginForm';
+import LoginContainer from '../components/LoginContainer';
 
 
 
@@ -19,6 +19,6 @@ export default function Login (props) {
   }
 
   return (
-     <LoginForm onChange={e => setUserName(e.target.value) } value={username} onClick = {handleLogin}/>
+     <LoginContainer onChange={e => setUserName(e.target.value) } value={username} onClick = {handleLogin}/>
     )
 }

@@ -1,0 +1,129 @@
+.LoginContainer {
+    height: 220px;
+    width: 500px;
+    background-color: #fff;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+}
+
+.LoginContainer p {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 26px;
+    margin-left: 32px;
+}
+
+.LoginContainer label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    margin-left: 32px;
+}
+
+.LoginContainer input {
+    width: 444px;
+    height: 28px;
+    background: #FFFFFF;
+    border: 1px solid #777777;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 31px;
+    margin-top: 13px;
+}
+
+.LoginContainer button {
+    width: 111px;
+    height: 33px;
+    margin-top: 20px;
+    margin-left: 364px;
+    background-color: black;
+    color: white;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+@media screen and (max-width: 542px) {
+    .LoginContainer {
+        width: 400px;
+    }
+
+    .LoginContainer p {
+        font-size: 18px;
+    }
+
+    .LoginContainer input {
+        width: 350px;
+        margin-left: 25px;
+    }
+
+    .LoginContainer button {
+        margin-left: 265px;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .LoginContainer {
+        width: 350px;
+    }
+
+    .LoginContainer p {
+        font-size: 17px;
+    }
+
+    .LoginContainer input {
+        width: 310px;
+        margin-left: 25px;
+    }
+
+    .LoginContainer button {
+        margin-left: 211px;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .LoginContainer {
+        width: 330px;
+    }
+
+    .LoginContainer p {
+        font-size: 15px;
+    }
+
+    .LoginContainer input {
+        width: 295px;
+        margin-left: 25px;
+    }
+
+    .LoginContainer button {
+        margin-left: 195px;
+        margin-top: 30px;
+    }
+}
+
+
+@media screen and (max-width: 340px) {
+    .LoginContainer {
+        width: 310px;
+    }
+
+    .LoginContainer p {
+        font-size: 15px;
+    }
+
+    .LoginContainer input {
+        width: 255px;
+        margin-left: 25px;
+    }
+
+    .LoginContainer button {
+        margin-left: 170px;
+        margin-top: 30px;
+    }
+}
+
