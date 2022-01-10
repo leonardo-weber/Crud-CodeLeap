@@ -7,3 +7,33 @@
     border: 1px solid #000;
   
 }
+
+#next {
+    margin: 20px;
+    margin-left: 550px;
+}
+
+.buttonEdit {
+    margin-left: 520px;
+    margin-right: 50px;
+}
+
+@media screen and (max-width: 900px) {
+    .crudView {
+        width: 625px;
+    }
+ }
+
+ @media screen and (max-width: 760px) {
+    .crudView {
+        width: 590px;
+        margin-left: 30px;
+    }
+ }
+
+ @media screen and (max-width: 680px) {
+    .crudView {
+        width: 550px;
+        margin-left: 30px;
+    }
+ }

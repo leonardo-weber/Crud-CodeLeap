@@ -3,3 +3,25 @@
     height: 5000px;
     background-color: white ;
 }
+
+@media screen and (max-width: 900px) {
+    .CrudContainer {
+        width: 700px;
+    }
+
+}
+
+
+@media screen and (max-width: 760px) {
+    .CrudContainer {
+        width: 650px;
+    }
+
+}
+
+@media screen and (max-width: 680px) {
+    .CrudContainer {
+        width: 600px;
+    }
+
+}

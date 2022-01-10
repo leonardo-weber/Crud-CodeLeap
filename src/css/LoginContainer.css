@@ -127,3 +127,27 @@
     }
 }
 
+@media screen and (max-height: 240px) {
+    .LoginContainer {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-height: 208px) {
+    .LoginContainer {
+        height: 170px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+
+    .LoginContainer button {
+        margin-left: 350px;
+        margin-top: 8px;
+        height: 25px;
+    }
+
+
+}

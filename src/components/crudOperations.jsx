@@ -5,8 +5,8 @@ import React from 'react'
 import Header from './header'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setIdentifier } from '../redux/userSlice';
-import { useState, useLayoutEffect } from 'react/cjs/react.development'
+import { setIdentifier, setNextLink, setPreviousLink } from '../redux/userSlice';
+import { useState, useEffect } from 'react/cjs/react.development'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
@@ -14,8 +14,11 @@ import CreateAndUpdate from './CreateAndUpdate'
 
 export default function CrudOperations () {
 
-    const username = useSelector(state => state['nameData'].username)
-    
+    const username = useSelector(state => state['reduxData'].username)
+    const link = useSelector(state => state['reduxData'].nextLink)
+    const previousLink = useSelector(state => state['reduxData'].previousLink)
+    const identifier = useSelector(state => state['reduxData'].id)
+
     const [post, setPost] = useState({
         username: username,
         title: '',
@@ -27,19 +30,21 @@ export default function CrudOperations () {
         content: ''
     }
     
+    
     const dispatch = useDispatch()
     
     const [list, setList] = useState([])
 
     const [ButtonName, setButtonName] = useState('CREATE')
     
-    const identifier = useSelector(state => state['nameData'].id)
     
     const databaseURL = "https://dev.codeleap.co.uk/careers/"
     
-    useLayoutEffect( () => {
+    useEffect( () => {
         axios.get(databaseURL)
-        .then(resp => setList(resp.data['results']))
+        .then(resp => {
+            setList(resp.data['results'])
+        })
         .catch(e => console.log('erro: ', e))
     },[])
    
@@ -51,34 +56,31 @@ export default function CrudOperations () {
     }
 
     function savePost (e) {
-        
-       const data = Object.assign(post)
 
-       if (data.title === '' || data.content === '') {
+       if (post.title === '' || post.content === '') {
            e.preventDefault ()
            alert('You need to type in both fields in order to make a post')
        } else {
-           axios.post(databaseURL, data)
+           axios.post(databaseURL, post)
            .then(resp => {
                const newList = updateList(resp.data)
                setList(newList)
-               setPost(initialState)    
+               console.log('chegou aqui')  
             })
-            .catch(console.log('error'))
+            .catch(e => console.log(e))
        }
+       setPost(initialState) 
 
     }
     
     function patchData (e) {
 
-        const data = Object.assign(post)
-
-        if (data.title === '' || data.content === '') {
+        if (post.title === '' || post.content === '') {
             e.preventDefault()
             alert('You need to type in both fields in order to make a post')
         } 
         else {
-           axios.patch(`${databaseURL}${identifier}/`, data )
+           axios.patch(`${databaseURL}${identifier}/`, post )
             .then(resp => {
                 const newList = updateList(resp.data)
                 setList(newList)
@@ -101,10 +103,12 @@ export default function CrudOperations () {
     
     function updateInputField (e) {  
         setPost({title: e.target.value, content: post.content, username: post.username})
+        console.log(post)
     }
 
     function updateContentField(e) {
         setPost({content: e.target.value, title: post.title, username: post.username })
+        console.log(post)
     }
     
     function loadPost (post) {
@@ -113,28 +117,61 @@ export default function CrudOperations () {
         dispatch(setIdentifier(post.id))
         
    }
+
+   function nextPage () {
+        if (link === '') {
+            axios.get(databaseURL)
+            .then(resp => {
+                axios.get(resp.data['next'])
+                    .then(resp => {
+                        setList(resp.data['results'])
+                        dispatch(setNextLink(resp.data['next']))
+                        dispatch(setPreviousLink(resp.data['previous']))
+                    })
+                    .catch(e => console.log(e))
+            })
+        } else {
+            axios.get(link)
+                .then(resp => {
+                    setList(resp.data['results'])
+                    dispatch(setNextLink(resp.data['next']))
+                    dispatch(setPreviousLink(resp.data['previous']))
+                })
+        }
+   }
+
+   function previousPage () {
+       if (previousLink === '') {
+           alert('there is no previous page')
+       } else {
+           axios.get(previousLink)
+            .then(resp => {
+                setList(resp.data['results'])
+                dispatch(setNextLink(resp.data['next']))
+                dispatch(setPreviousLink(resp.data['previous']))
+            })
+            .catch(e => console.log(e))
+       }
+   }
     
     function renderData () {
-        console.log(list)
         return list.map(post => {
             return (
                 <div className = 'crudView'>
                     <Header title = {post.title}>   
                         {username === post.username ? (
                             <>
-                             <div className="iconEdit">
                                 <button className='buttonEdit ' onClick={() => loadPost(post)}>
                                     <FontAwesomeIcon icon={faEdit} size='lg'>
 
-                                    </FontAwesomeIcon> </button>
-                            </div>
-                            <div className="iconDelete">
-                                    <button className='buttonDelete' onClick={() => deleteData(post)}>
-                                        <FontAwesomeIcon icon={faTrash} size='lg'>
+                                    </FontAwesomeIcon> 
+                                </button>
+                                <button className='buttonDelete' onClick={() => deleteData(post)}>
+                                    <FontAwesomeIcon icon={faTrash} size='lg'>
 
-                                        </FontAwesomeIcon>
-                                    </button>
-                            </div></>
+                                    </FontAwesomeIcon>
+                                </button>
+                         </>
                         ) : null}
                     </Header> 
 
@@ -151,8 +188,10 @@ export default function CrudOperations () {
         <CreateAndUpdate onChangeTitle = {e => updateInputField(e)} onChangeContent = {e => updateContentField(e)} TitleValue = {post.title} ContentValue = {post.content} onClick={e => `${ButtonName === 'CREATE' ? savePost(e) : patchData(e)}`} ButtonName={ButtonName} />
 
         {renderData()}
-        </>
 
+        <button id = 'next' onClick={() => previousPage()}> Previous Page </button>
+        <button id ='previous' onClick={() => nextPage()}> Next Page </button>
+        </>
 
 
     

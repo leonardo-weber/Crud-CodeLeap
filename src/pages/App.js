@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 export default function App() {  
   
-  const validUsername = useSelector(state => state['nameData'].validUsername)
+  const validUsername = useSelector(state => state['reduxData'].validUsername)
   
   return (    
     <>

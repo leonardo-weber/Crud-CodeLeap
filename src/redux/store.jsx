@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import setUsername from './userSlice'
 import setIdentifier from './userSlice'
+import  setNextLink from './userSlice'
+import setPreviousLink  from './userSlice'
 
 export default configureStore({
     reducer: {
-      nameData: setUsername, setIdentifier
+      reduxData: setUsername, setIdentifier, setNextLink, setPreviousLink
     }
 })

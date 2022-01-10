@@ -5,7 +5,9 @@ export const slice = createSlice({
     initialState: {
         username: '',
         validUsername: false,
-        id: null
+        id: null,
+        nextLink: '',
+        previousLink: ''
     },
     reducers: {
         setUsername(state, { payload }) {
@@ -13,10 +15,17 @@ export const slice = createSlice({
         },
         setIdentifier(state, { payload }) {
             return {...state, id: payload, validUsername: true}
-        }
+        },
+        setNextLink(state, { payload }) {
+            return {...state, nextLink: payload, validUsername: true}
+        },
+        setPreviousLink(state, { payload }) {
+            return {...state, previousLink: payload, validUsername: true}
+        },
+
     }
 })
 
-export const { setUsername, setIdentifier } = slice.actions
+export const { setUsername, setIdentifier, setNextLink, setPreviousLink } = slice.actions
 export default slice.reducer
 export const getState = state => state.user
