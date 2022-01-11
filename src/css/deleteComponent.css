@@ -1,0 +1,28 @@
+.DeleteComponent {
+    width: 661px;
+    height: 168px;
+    border: 1px solid black;
+    background-color: #fff;
+    position: absolute;
+    top: 125px;
+    left:535px;
+    z-index: 4;
+}
+
+p {
+    margin-top: 34px;
+    margin-left: 49px;
+}
+
+#yesButton {
+    width: 111px;
+    height: 33px;
+    margin-right: 16px;
+    margin-left: 389px;
+    margin-top: 50px;
+}
+
+#noButton {
+    width: 111px;
+    height: 33px;
+}

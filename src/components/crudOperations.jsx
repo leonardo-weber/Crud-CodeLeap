@@ -5,19 +5,21 @@ import React from 'react'
 import Header from './header'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setIdentifier, setNextLink, setPreviousLink } from '../redux/userSlice';
+import { setIdentifier, setShowDeleteComponent } from '../redux/userSlice';
 import { useState, useEffect } from 'react/cjs/react.development'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
 import CreateAndUpdate from './CreateAndUpdate'
+import DeleteComponent from './DeleteComponent'
 
 export default function CrudOperations () {
 
     const username = useSelector(state => state['reduxData'].username)
-    const link = useSelector(state => state['reduxData'].nextLink)
-    const previousLink = useSelector(state => state['reduxData'].previousLink)
     const identifier = useSelector(state => state['reduxData'].id)
+    const ShowDeleteComponent = useSelector(state => state['reduxData'].showDeleteComponent)
+    const DeleteData = useSelector(state => state['reduxData'].deleteData)
+    const noDeleteData = useSelector(state => state['reduxData'].noDeleteData)
 
     const [post, setPost] = useState({
         username: username,
@@ -34,6 +36,10 @@ export default function CrudOperations () {
     const dispatch = useDispatch()
     
     const [list, setList] = useState([])
+
+    const [nextLink, setNextLink] = useState('')
+    
+    const [previousLink, setPreviousLink] = useState('')
 
     const [ButtonName, setButtonName] = useState('CREATE')
     
@@ -55,7 +61,7 @@ export default function CrudOperations () {
         return newList
     }
 
-    function savePost (e) {
+    function postData (e) {
 
        if (post.title === '' || post.content === '') {
            e.preventDefault ()
@@ -92,11 +98,13 @@ export default function CrudOperations () {
     }   
     
     function deleteData(post) { 
+        dispatch(setShowDeleteComponent(true))
         axios.delete(`https://dev.codeleap.co.uk/careers/${post.id}/`) 
             .then(resp => {
                 const newList = updateList(post, false)
                 setList(newList)
                 setPost(initialState)
+                setButtonName('CREATE')
             })
             .catch( () => console.log('erro')) 
     }
@@ -115,27 +123,26 @@ export default function CrudOperations () {
         setButtonName('UPDATE')
         setPost(post)
         dispatch(setIdentifier(post.id))
-        
    }
 
    function nextPage () {
-        if (link === '') {
+        if (nextLink === '') {
             axios.get(databaseURL)
             .then(resp => {
                 axios.get(resp.data['next'])
                     .then(resp => {
                         setList(resp.data['results'])
-                        dispatch(setNextLink(resp.data['next']))
-                        dispatch(setPreviousLink(resp.data['previous']))
+                        setNextLink(resp.data['next'])
+                        setPreviousLink(resp.data['previous'])
                     })
                     .catch(e => console.log(e))
             })
         } else {
-            axios.get(link)
+            axios.get(nextLink)
                 .then(resp => {
                     setList(resp.data['results'])
-                    dispatch(setNextLink(resp.data['next']))
-                    dispatch(setPreviousLink(resp.data['previous']))
+                    setNextLink(resp.data['next'])
+                    setPreviousLink(resp.data['previous'])
                 })
         }
    }
@@ -147,8 +154,8 @@ export default function CrudOperations () {
            axios.get(previousLink)
             .then(resp => {
                 setList(resp.data['results'])
-                dispatch(setNextLink(resp.data['next']))
-                dispatch(setPreviousLink(resp.data['previous']))
+                setNextLink(resp.data['next'])
+                setPreviousLink(resp.data['previous'])
             })
             .catch(e => console.log(e))
        }
@@ -161,8 +168,9 @@ export default function CrudOperations () {
                     <Header title = {post.title}>   
                         {username === post.username ? (
                             <>
+                                
                                 <button className='buttonEdit ' onClick={() => loadPost(post)}>
-                                    <FontAwesomeIcon icon={faEdit} size='lg'>
+                                    <FontAwesomeIcon  icon={faEdit} size='lg'>
 
                                     </FontAwesomeIcon> 
                                 </button>
@@ -174,10 +182,9 @@ export default function CrudOperations () {
                          </>
                         ) : null}
                     </Header> 
-
-                    <p id = 'datetime'> {post.created_datetime.substr(0,10) } </p>
-                    <p id = 'userp'>@{post.username} </p>
-                    <p> {post.content} </p>
+                    
+                    <p id = 'username'>@{post.username} </p>
+                    <p id = 'content'> {post.content} </p>
                 </div>
             )
         })
@@ -185,12 +192,15 @@ export default function CrudOperations () {
 
     return (
         <>
-        <CreateAndUpdate onChangeTitle = {e => updateInputField(e)} onChangeContent = {e => updateContentField(e)} TitleValue = {post.title} ContentValue = {post.content} onClick={e => `${ButtonName === 'CREATE' ? savePost(e) : patchData(e)}`} ButtonName={ButtonName} />
+        <CreateAndUpdate onChangeTitle = {e => updateInputField(e)} onChangeContent = {e => updateContentField(e)} TitleValue = {post.title} ContentValue = {post.content} onClick={e => `${ButtonName === 'CREATE' ? postData(e) : patchData(e)}`} ButtonName={ButtonName} />
 
         {renderData()}
 
-        <button id = 'next' onClick={() => previousPage()}> Previous Page </button>
-        <button id ='previous' onClick={() => nextPage()}> Next Page </button>
+        {ShowDeleteComponent === true ? <DeleteComponent> </DeleteComponent> : null}
+
+        <button className='pageButton' id = 'previousPage' onClick={() => previousPage()}> Previous Page </button>
+        <button className='pageButton' id ='nextPage' onClick={() => nextPage()}> Next Page </button>
+        
         </>
 
 

@@ -8,15 +8,53 @@
   
 }
 
-#next {
+.header {
+    color: aqua;
+}
+
+#previousPage {
     margin: 20px;
     margin-left: 550px;
 }
 
-.buttonEdit {
-    margin-left: 520px;
-    margin-right: 50px;
+#username {
+    margin-left: 37px;
 }
+
+#content {
+    margin-left: 37px;
+}
+
+.buttonEdit {
+    margin-left: 600px;
+    margin-right: 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+}
+
+.buttonDelete {
+    background-color: #000;
+    color: white;
+    border: none
+}
+
+.pageButton {
+    width: 100px;
+    height: 33px;
+    background-color: #000;
+    color: white;
+    font-size: 12px;
+    margin-right: 30px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #000;
+}
+
+.pageButton:active {
+    box-shadow: none;
+}
+
+
 
 @media screen and (max-width: 900px) {
     .crudView {

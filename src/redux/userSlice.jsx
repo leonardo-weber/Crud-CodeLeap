@@ -6,8 +6,8 @@ export const slice = createSlice({
         username: '',
         validUsername: false,
         id: null,
-        nextLink: '',
-        previousLink: ''
+        deleteData: null,
+        showDeleteComponent: false
     },
     reducers: {
         setUsername(state, { payload }) {
@@ -16,16 +16,15 @@ export const slice = createSlice({
         setIdentifier(state, { payload }) {
             return {...state, id: payload, validUsername: true}
         },
-        setNextLink(state, { payload }) {
-            return {...state, nextLink: payload, validUsername: true}
+        setDeleteData(state, { payload }) {
+            return {...state, deleteData: payload, validUsername: true}
         },
-        setPreviousLink(state, { payload }) {
-            return {...state, previousLink: payload, validUsername: true}
-        },
-
+        setShowDeleteComponent(state, { payload }) {
+            return {...state, showDeleteComponent: payload, validUsername: true}
+        }
     }
 })
 
-export const { setUsername, setIdentifier, setNextLink, setPreviousLink } = slice.actions
+export const { setUsername, setIdentifier, setDeleteData, setShowDeleteComponent} = slice.actions
 export default slice.reducer
 export const getState = state => state.user
