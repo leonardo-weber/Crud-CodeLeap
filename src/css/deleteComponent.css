@@ -1,20 +1,20 @@
 .DeleteComponent {
     width: 661px;
     height: 168px;
-    border: 1px solid black;
     background-color: #fff;
     position: absolute;
     top: 125px;
     left:535px;
     z-index: 4;
+    box-shadow: 2px 2px 5px;
 }
 
-p {
+.DeleteComponent p {
     margin-top: 34px;
     margin-left: 49px;
 }
 
-#yesButton {
+.DeleteComponent #yesButton {
     width: 111px;
     height: 33px;
     margin-right: 16px;
@@ -22,7 +22,14 @@ p {
     margin-top: 50px;
 }
 
-#noButton {
+.DeleteComponent #noButton {
     width: 111px;
     height: 33px;
+}
+
+.DeleteComponent button {
+    border: 1px solid #000;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }

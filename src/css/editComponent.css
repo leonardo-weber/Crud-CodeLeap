@@ -1,0 +1,61 @@
+.editComponent {
+    height: 349px;
+    width: 723px;
+    box-shadow: 2px 2px 5px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 120px;
+    left: 505px;
+}
+
+.editComponent p {
+    margin-left: 30px;
+    margin-top: 23px;
+}
+
+.editComponent #titleLabel {
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.editComponent #inputTitle {
+    margin-top: 7px;
+    margin-left: 30px;
+    width: 659px;
+    height: 28px;
+    background: #FFFFFF;
+    border: 1px solid #777777;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.editComponent #contentLabel {
+    margin-top: 19px;
+    margin-left: 30px;
+}
+
+.editComponent #inputContent {
+    margin-top: 7px;
+    margin-left: 30px;
+    width: 659px;
+    height: 74px;
+    border: 1px solid #777777;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.editComponent #button {
+    margin-top: 25px;
+    margin-left: 578px;
+    width: 111px;
+    height: 33px;
+    background-color: #000;
+    color: white;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+}

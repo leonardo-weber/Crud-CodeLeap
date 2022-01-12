@@ -5,29 +5,36 @@ import React from 'react'
 import Header from './header'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setIdentifier, setShowDeleteComponent } from '../redux/userSlice';
+import { setIdentifier, setShowDeleteComponent, setShowEditComponent } from '../redux/userSlice';
 import { useState, useEffect } from 'react/cjs/react.development'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
 import CreateAndUpdate from './CreateAndUpdate'
-import DeleteComponent from './DeleteComponent'
+import '../css/deleteComponent.css'
+import '../css/editComponent.css'
 
 export default function CrudOperations () {
 
     const username = useSelector(state => state['reduxData'].username)
     const identifier = useSelector(state => state['reduxData'].id)
-    const ShowDeleteComponent = useSelector(state => state['reduxData'].showDeleteComponent)
-    const DeleteData = useSelector(state => state['reduxData'].deleteData)
-    const noDeleteData = useSelector(state => state['reduxData'].noDeleteData)
+    const showDeleteComponent = useSelector(state => state['reduxData'].showDeleteComponent)
+    const showEditComponent = useSelector(state => state['reduxData'].showEditComponent)
 
     const [post, setPost] = useState({
         username: username,
         title: '',
         content: ''
     })
+
+    const [editData, setEditData] = useState({
+        username: username,
+        title: '',
+        content: ''
+    })
     
     const initialState = {
+        username: username,
         title: '',
         content: ''
     }
@@ -43,7 +50,6 @@ export default function CrudOperations () {
 
     const [ButtonName, setButtonName] = useState('CREATE')
     
-    
     const databaseURL = "https://dev.codeleap.co.uk/careers/"
     
     useEffect( () => {
@@ -53,7 +59,6 @@ export default function CrudOperations () {
         })
         .catch(e => console.log('erro: ', e))
     },[])
-   
 
     function updateList (post, add = true) {
         const newList = list.filter(p => p.id !== post.id)
@@ -71,7 +76,6 @@ export default function CrudOperations () {
            .then(resp => {
                const newList = updateList(resp.data)
                setList(newList)
-               console.log('chegou aqui')  
             })
             .catch(e => console.log(e))
        }
@@ -81,49 +85,72 @@ export default function CrudOperations () {
     
     function patchData (e) {
 
-        if (post.title === '' || post.content === '') {
+        if (editData.title === '' || editData.content === '') {
             e.preventDefault()
             alert('You need to type in both fields in order to make a post')
         } 
         else {
-           axios.patch(`${databaseURL}${identifier}/`, post )
+           axios.patch(`${databaseURL}${identifier}/`, editData )
             .then(resp => {
                 const newList = updateList(resp.data)
                 setList(newList)
-                setPost(initialState)   
-                setButtonName('CREATE') 
+                dispatch(setShowEditComponent(false))
                 })
+               
         }
-        
+ 
     }   
     
-    function deleteData(post) { 
+    function deleteData(post) {
         dispatch(setShowDeleteComponent(true))
-        axios.delete(`https://dev.codeleap.co.uk/careers/${post.id}/`) 
-            .then(resp => {
-                const newList = updateList(post, false)
-                setList(newList)
-                setPost(initialState)
-                setButtonName('CREATE')
-            })
-            .catch( () => console.log('erro')) 
+        dispatch(setShowEditComponent(false))
+        setPost(post)
     }
     
     function updateInputField (e) {  
         setPost({title: e.target.value, content: post.content, username: post.username})
-        console.log(post)
+   
     }
 
     function updateContentField(e) {
         setPost({content: e.target.value, title: post.title, username: post.username })
-        console.log(post)
+        
+    }
+
+    function updateInputEditDataField (e) {  
+        setEditData({title: e.target.value, content: editData.content, username: editData.username})
+
+    }
+
+    function updateContentEditDataField(e) {
+        setEditData({content: e.target.value, title: editData.title, username: editData.username })
+
     }
     
     function loadPost (post) {
-        setButtonName('UPDATE')
-        setPost(post)
+        setEditData(post)
         dispatch(setIdentifier(post.id))
+        dispatch(setShowEditComponent(true))
+        dispatch(setShowDeleteComponent(false))
    }
+
+   function handleYes () {
+        axios.delete(`https://dev.codeleap.co.uk/careers/${post.id}/`) 
+        .then(resp => {
+          const newList = updateList(post, false)
+            setList(newList)
+            setPost(initialState)
+            setButtonName('CREATE')
+            })
+            .catch( () => console.log('erro')) 
+
+        dispatch(setShowDeleteComponent(false))
+        
+    }
+
+    function handleNo () {
+        dispatch(setShowDeleteComponent(false))
+    }
 
    function nextPage () {
         if (nextLink === '') {
@@ -196,7 +223,26 @@ export default function CrudOperations () {
 
         {renderData()}
 
-        {ShowDeleteComponent === true ? <DeleteComponent> </DeleteComponent> : null}
+
+        {showEditComponent === true ? (
+            <div className='editComponent'>
+                <p> Edit item </p>  
+                <label id = 'titleLabel'> Title </label>
+                <input onChange={e => updateInputEditDataField(e)} value = {editData.title} placeholder = 'Hello World' id = 'inputTitle' />
+                <label  id = 'contentLabel'> Content </label>
+                <input onChange={e => updateContentEditDataField(e) }value = {editData.content} placeholder = 'Content here' id = 'inputContent'/>
+                <button onClick={() => patchData()} id = 'button'  type = 'submit'> SAVE </button>
+            </div> 
+        ) : null}
+
+
+        {showDeleteComponent === true ? (
+            <div className='DeleteComponent'> 
+                <p> Are you sure you want to delete this item? </p>
+                <button onClick={() => handleNo()} className='button' id = 'yesButton' type="submit"> Cancel </button>
+                <button onClick={() => handleYes()} className='button' id = 'noButton' type="submit"> OK </button>
+            </div>
+        ) : null}
 
         <button className='pageButton' id = 'previousPage' onClick={() => previousPage()}> Previous Page </button>
         <button className='pageButton' id ='nextPage' onClick={() => nextPage()}> Next Page </button>
