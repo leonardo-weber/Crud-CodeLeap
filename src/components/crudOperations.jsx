@@ -103,7 +103,6 @@ export default function CrudOperations () {
     
     function deleteData(post) {
         dispatch(setShowDeleteComponent(true))
-        dispatch(setShowEditComponent(false))
         setPost(post)
     }
     
@@ -131,7 +130,6 @@ export default function CrudOperations () {
         setEditData(post)
         dispatch(setIdentifier(post.id))
         dispatch(setShowEditComponent(true))
-        dispatch(setShowDeleteComponent(false))
    }
 
    function handleYes () {
@@ -223,24 +221,29 @@ export default function CrudOperations () {
 
         {renderData()}
 
-
+        
         {showEditComponent === true ? (
-            <div className='editComponent'>
-                <p> Edit item </p>  
-                <label id = 'titleLabel'> Title </label>
-                <input onChange={e => updateInputEditDataField(e)} value = {editData.title} placeholder = 'Hello World' id = 'inputTitle' />
-                <label  id = 'contentLabel'> Content </label>
-                <input onChange={e => updateContentEditDataField(e) }value = {editData.content} placeholder = 'Content here' id = 'inputContent'/>
-                <button onClick={() => patchData()} id = 'button'  type = 'submit'> SAVE </button>
-            </div> 
+            <div className="layout"> 
+                <div className='editComponent'>
+                    <p> Edit item </p>  
+                    <label id = 'titleLabel'> Title </label>
+                    <input onChange={e => updateInputEditDataField(e)} value = {editData.title} placeholder = 'Hello World' id = 'inputTitle' />
+                    <label  id = 'contentLabel'> Content </label>
+                    <input onChange={e => updateContentEditDataField(e) }value = {editData.content} placeholder = 'Content here' id = 'inputContent'/>
+                    <button onClick={() => patchData()} className= 'editButton'  type = 'submit'> SAVE </button>
+
+                </div> 
+            </div>
         ) : null}
 
 
         {showDeleteComponent === true ? (
-            <div className='DeleteComponent'> 
-                <p> Are you sure you want to delete this item? </p>
-                <button onClick={() => handleNo()} className='button' id = 'yesButton' type="submit"> Cancel </button>
-                <button onClick={() => handleYes()} className='button' id = 'noButton' type="submit"> OK </button>
+            <div className="layout"> 
+                <div className='DeleteComponent'> 
+                    <p> Are you sure you want to delete this item? </p>
+                    <button onClick={() => handleNo()} className='button' id = 'yesButton' type="submit"> Cancel </button>
+                    <button onClick={() => handleYes()} className='button' id = 'noButton' type="submit"> OK </button>
+                </div>
             </div>
         ) : null}
 

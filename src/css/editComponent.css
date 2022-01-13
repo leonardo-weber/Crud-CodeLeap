@@ -5,9 +5,6 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 120px;
-    left: 505px;
 }
 
 .editComponent p {
@@ -46,7 +43,7 @@
     border-radius: 4px;
 }
 
-.editComponent #button {
+.editComponent .editButton {
     margin-top: 25px;
     margin-left: 578px;
     width: 111px;
