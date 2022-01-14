@@ -1,0 +1,116 @@
+.createPost {
+    width: 90%;
+    height: 349px;
+    border: 1px solid #999;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.divH4 {
+    width: 80%;
+    height: 70px;
+    margin-left: 30px;
+    display: flex;
+    justify-content: left;
+}
+
+.divTitleLabel {
+    margin-left: 30px;
+    display: flex;
+    justify-content: left;
+    
+}
+
+.divInputTitle {
+    margin-left: 30px;
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
+.divContentLabel {
+    margin-left: 30px;
+    margin-top: 19px;
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    
+}
+
+.divContentInput {
+    margin-left: 30px;
+    margin-top: 7px;
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
+.divCreateButton {
+    width: 95%;
+    display: flex;
+    justify-content:flex-end;
+    margin-top: 20px;
+}
+
+.createPost h4 {
+    font-size: 22px;
+}
+
+.createPost #titleLabel {
+    margin-top: 5px;
+}
+
+.createPost #inputTitle {
+    margin-top: 7px;
+    width: 90%;
+    height: 28px;
+    background: #FFFFFF;
+    border: 1px solid #777777;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+
+.createPost #inputContent {
+    width: 90%;
+    height: 74px;
+    border: 1px solid #777777;
+    box-sizing: border-box;
+    border-radius: 4px;
+    resize: none;
+}
+
+.createPost #button {
+    width: 111px;
+    height: 33px;
+    background-color: #000;
+    color: white;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+@media screen and (max-width: 1300px) {
+    .createPost #inputTitle {
+        width: 85%;
+    }
+
+    .createPost #inputContent {
+        width: 85%;
+    }
+
+    .createPost .divCreateButton {
+        width: 91%;
+    } 
+}
+
+@media screen and (max-width: 1123px) {
+
+    .createPost .divCreateButton {
+        width: 92%;
+    } 
+}
+
+

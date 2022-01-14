@@ -1,6 +1,6 @@
 .editComponent {
     height: 349px;
-    width: 723px;
+    width: 40%;
     box-shadow: 2px 2px 5px;
     background-color: #fff;
     display: flex;
@@ -20,7 +20,7 @@
 .editComponent #inputTitle {
     margin-top: 7px;
     margin-left: 30px;
-    width: 659px;
+    width: 90%;
     height: 28px;
     background: #FFFFFF;
     border: 1px solid #777777;
@@ -36,7 +36,7 @@
 .editComponent #inputContent {
     margin-top: 7px;
     margin-left: 30px;
-    width: 659px;
+    width: 90%;
     height: 74px;
     border: 1px solid #777777;
     box-sizing: border-box;
@@ -44,8 +44,6 @@
 }
 
 .editComponent .editButton {
-    margin-top: 25px;
-    margin-left: 578px;
     width: 111px;
     height: 33px;
     background-color: #000;
@@ -54,5 +52,14 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
+    margin-left: 10px;
 
+}
+
+.editComponent .buttonDiv {
+    width: 90%;
+    margin-left: 30px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
 }

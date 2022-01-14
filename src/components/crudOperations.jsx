@@ -1,8 +1,11 @@
-import '../css/CreateAndUpdate.css'
+import '../css/createPost.css'
 import '../css/crudRender.css'
+import '../css/deleteComponent.css'
+import '../css/editComponent.css'
 import axios from 'axios'
 import React from 'react'
 import Header from './header'
+import moment from 'moment'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setIdentifier, setShowDeleteComponent, setShowEditComponent } from '../redux/userSlice';
@@ -10,11 +13,11 @@ import { useState, useEffect } from 'react/cjs/react.development'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
-import CreateAndUpdate from './CreateAndUpdate'
-import '../css/deleteComponent.css'
-import '../css/editComponent.css'
+import CreatePost from './createPost'
+
 
 export default function CrudOperations () {
+
 
     const username = useSelector(state => state['reduxData'].username)
     const identifier = useSelector(state => state['reduxData'].id)
@@ -98,7 +101,6 @@ export default function CrudOperations () {
                 })
                
         }
- 
     }   
     
     function deleteData(post) {
@@ -188,28 +190,44 @@ export default function CrudOperations () {
     
     function renderData () {
         return list.map(post => {
+            console.log(list)
             return (
-                <div className = 'crudView'>
+                <div key={post.id} className = 'crudView'>
                     <Header title = {post.title}>   
                         {username === post.username ? (
                             <>
-                                
-                                <button className='buttonEdit ' onClick={() => loadPost(post)}>
-                                    <FontAwesomeIcon  icon={faEdit} size='lg'>
+                                <div className="buttonDiv">
+                                    <a href="#editComponent">
+                                        <button className='buttonEdit ' onClick={() => loadPost(post)}>
+                                            <FontAwesomeIcon  icon={faEdit} size='lg'>
 
-                                    </FontAwesomeIcon> 
-                                </button>
-                                <button className='buttonDelete' onClick={() => deleteData(post)}>
-                                    <FontAwesomeIcon icon={faTrash} size='lg'>
+                                            </FontAwesomeIcon> 
+                                        </button>
+                                    </a>
+                                    <a href="#deleteComponent">
+                                        <button className='buttonDelete' onClick={() => deleteData(post)}>
+                                            <FontAwesomeIcon icon={faTrash} size='lg'>
 
-                                    </FontAwesomeIcon>
-                                </button>
+                                            </FontAwesomeIcon>
+                                        </button>
+                                    </a>
+                                </div>
                          </>
                         ) : null}
                     </Header> 
                     
-                    <p id = 'username'>@{post.username} </p>
-                    <p id = 'content'> {post.content} </p>
+                    <div className="divDatetime">
+                         <p> {moment(post.created_datetime).fromNow()}</p>
+                    </div>
+
+                    <div className="divUsername">
+                        <p >@{post.username} </p>
+                    </div>
+
+
+                    <div className="divContent">
+                        <p> {post.content} </p>
+                    </div>
                 </div>
             )
         })
@@ -217,20 +235,24 @@ export default function CrudOperations () {
 
     return (
         <>
-        <CreateAndUpdate onChangeTitle = {e => updateInputField(e)} onChangeContent = {e => updateContentField(e)} TitleValue = {post.title} ContentValue = {post.content} onClick={e => `${ButtonName === 'CREATE' ? postData(e) : patchData(e)}`} ButtonName={ButtonName} />
+        <CreatePost onChangeTitle = {e => updateInputField(e)} onChangeContent = {e => updateContentField(e)} TitleValue = {post.title} ContentValue = {post.content} onClick={e => `${ButtonName === 'CREATE' ? postData(e) : patchData(e)}`} ButtonName={ButtonName} />
 
         {renderData()}
 
         
         {showEditComponent === true ? (
             <div className="layout"> 
-                <div className='editComponent'>
+                <div id = 'editComponent' className='editComponent'>
                     <p> Edit item </p>  
                     <label id = 'titleLabel'> Title </label>
                     <input onChange={e => updateInputEditDataField(e)} value = {editData.title} placeholder = 'Hello World' id = 'inputTitle' />
                     <label  id = 'contentLabel'> Content </label>
                     <input onChange={e => updateContentEditDataField(e) }value = {editData.content} placeholder = 'Content here' id = 'inputContent'/>
-                    <button onClick={() => patchData()} className= 'editButton'  type = 'submit'> SAVE </button>
+                    <div className="buttonDiv">
+                        <button onClick={() => dispatch(setShowEditComponent(false))} className='editButton'> RETURN </button>
+                        <button onClick={() => patchData()} className= 'editButton'  type = 'submit'> SAVE </button>
+                    </div>
+            
 
                 </div> 
             </div>
@@ -241,14 +263,18 @@ export default function CrudOperations () {
             <div className="layout"> 
                 <div className='DeleteComponent'> 
                     <p> Are you sure you want to delete this item? </p>
-                    <button onClick={() => handleNo()} className='button' id = 'yesButton' type="submit"> Cancel </button>
-                    <button onClick={() => handleYes()} className='button' id = 'noButton' type="submit"> OK </button>
+                    <div className="buttonDiv"> 
+                        <button onClick={() => handleNo()} className='button' id = 'yesButton' type="submit"> Cancel </button>
+                        <button onClick={() => handleYes()} className='button' id = 'noButton' type="submit"> OK </button>
+                    </div>
                 </div>
             </div>
         ) : null}
 
-        <button className='pageButton' id = 'previousPage' onClick={() => previousPage()}> Previous Page </button>
-        <button className='pageButton' id ='nextPage' onClick={() => nextPage()}> Next Page </button>
+        <div className="previousNextButton">
+            <button className='pageButton' id = 'previousPage' onClick={() => previousPage()}> Previous Page </button>
+            <button className='pageButton' id ='nextPage' onClick={() => nextPage()}> Next Page </button>
+        </div>
         
         </>
 
