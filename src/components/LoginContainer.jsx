@@ -1,6 +1,10 @@
 import '../css/LoginContainer.css'
+import { useSelector } from 'react-redux'
 
 export default function LoginContainer (props) {
+
+   const username = useSelector(state => state['reduxData'].username)
+
     return (
         <div className='LoginContainer'>
         <p> Welcome to CodeLeap network! </p>

@@ -3,8 +3,13 @@ import '../css/header.css'
 export default function Header (props) {
     return (
         <div className="header">
-            <h1> {props.title} </h1>
+            <div className="divH1">
+                <h1> {props.title} </h1>
+            </div>
             {props.children}
         </div>
     )
 }
+
+
+

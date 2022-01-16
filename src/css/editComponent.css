@@ -41,6 +41,7 @@
     border: 1px solid #777777;
     box-sizing: border-box;
     border-radius: 4px;
+    overflow-wrap: break-word;
 }
 
 .editComponent .editButton {
@@ -53,6 +54,7 @@
     font-size: 16px;
     line-height: 19px;
     margin-left: 10px;
+    border-radius: 5px;
 
 }
 
@@ -63,3 +65,63 @@
     display: flex;
     justify-content: flex-end;
 }
+
+@media screen and (max-width: 1280px) {
+    .editComponent {
+        width: 70%;
+    }
+ }
+
+ @media screen and (max-width: 900px) {
+    .editComponent #inputTitle {
+        width: 88%;
+    }
+    .editComponent #inputContent {
+        width: 88%;
+    }
+
+    .editComponent .buttonDiv {
+        width: 88%;
+    }
+ }
+
+ @media screen and (max-width: 700px) {
+    .editComponent #inputTitle {
+        width: 85%;
+    }
+    .editComponent #inputContent {
+        width: 85%;
+    }
+
+    .editComponent .buttonDiv {
+        width: 85%;
+     
+    }
+ }
+
+ @media screen and (max-width: 530px) {
+    .editComponent #inputTitle {
+        width: 82%;
+    }
+    .editComponent #inputContent {
+        width: 82%;
+    }
+
+    .editComponent .buttonDiv {
+        width: 82%;
+    
+    }
+ }
+
+ @media screen and (max-width: 420px) {
+    .editComponent #inputTitle {
+        width: 74%;
+    }
+    .editComponent #inputContent {
+        width: 74%;
+    }
+
+    .editComponent .buttonDiv {
+        width: 70%;
+    }
+ }

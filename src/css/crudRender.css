@@ -1,14 +1,13 @@
 .crudView {
-    height: 328px;
     width: 90%;
-    display: table;;
-    border: 1px solid #000;
+    box-shadow: 1px 1px 5px black;
     margin-top: 50px; 
 }
 
 .crudView .buttonDiv {
     display: flex;
-    width: 95%;
+    width: 45%;
+    margin-right: 20px;
     justify-content: flex-end;
 }
 
@@ -35,7 +34,7 @@
     margin-left: 30px;
 }
 
-.previousNextButton {
+.previousAndNextButton {
     width: 100%;
     height: 80px;
     display: flex;
@@ -48,6 +47,9 @@
     background-color: #000;
     color: white;
     border: none;
+    cursor: pointer;
+    display: block;
+    padding: 15px;
 }
 
 .buttonDelete {
@@ -55,6 +57,9 @@
     color: white;
     border: none;
     margin-left: 10px;
+    cursor: pointer;
+    display: block;
+    padding: 15px;
 }
 
 .pageButton {
@@ -68,19 +73,31 @@
     display: inline;
     font-size: 15px;
     margin-left: 15px;
+    border-radius: 5px;
 }
 
 .pageButton:active {
     box-shadow: none;
 }
 
+.buttonDelete:hover {
+    background-color: rgba(220, 220, 220, 0.3);
+}
+
+
+.buttonEdit:hover {
+    background-color: rgba(220, 220, 220, 0.3);
+}
+
 .layout {
     width: 100%;
     height: 100%;
-    position: absolute;
-    left: 0px;
-    top: -60px;
-
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gainsboro;
 }
 
 
@@ -98,5 +115,13 @@
        
     }
 }
+
+@media screen and (max-width: 372px) {
+   .divDatetime {
+       margin-right: 20px;
+       width: 40%;
+   }
+}
+
 
 

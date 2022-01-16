@@ -2,8 +2,9 @@
     height: 220px;
     width: 500px;
     background-color: #fff;
-    border: 1px solid #CCCCCC;
+    box-shadow: 1px 1px 10px gray;
     box-sizing: border-box;
+    border-radius: 15px;
 }
 
 .LoginContainer p {
