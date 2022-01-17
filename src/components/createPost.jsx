@@ -18,6 +18,7 @@ export default function CreatePost (props) {
             </div>
             <div className="divCreateButton">
                 <button id = 'button'  type = 'submit' onClick={props.onClick}> {props.ButtonName} </button>
+                { /* isso vai funcionar :) */ }
             </div>
         </div>
     )
