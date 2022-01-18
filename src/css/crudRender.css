@@ -1,65 +1,44 @@
 .crudView {
     width: 90%;
-    box-shadow: 1px 1px 5px black;
-    margin-top: 50px; 
+    margin: 0px 39px 45px 38px;
+    border: 1px solid black; 
 }
 
-.crudView .buttonDiv {
+.divInlineElements {
     display: flex;
-    width: 45%;
-    margin-right: 20px;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
-.divDatetime {
-    width: 30%;
-    position: relative;
-    float: right;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 34px;
+#datetime {
+   margin-top: 23px;
+   margin-right: 25px;
 }
 
-.divUsername {
-    width: 50%;
-    margin-left: 30px;
-    display: flex;
-    justify-content: flex-start;
- 
+#username {
+  margin-top: 23px;
+  margin-left: 30px;
 }
 
-.divContent {
-    width: 90%;
-    margin-top: 17px;
-    margin-left: 30px;
-}
+#content {
+    margin: 18px 31px 57px 30px;
 
-.previousAndNextButton {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }
 
 .buttonEdit {
     background-color: #000;
     color: white;
     border: none;
-    cursor: pointer;
-    display: block;
-    padding: 15px;
+    cursor: pointer;   
+
 }
 
 .buttonDelete {
     background-color: #000;
     color: white;
     border: none;
-    margin-left: 10px;
+    margin: 23.75px 33px 23.75px 205.25px;
     cursor: pointer;
-    display: block;
-    padding: 15px;
+  
 }
 
 .pageButton {
@@ -89,39 +68,8 @@
     background-color: rgba(220, 220, 220, 0.3);
 }
 
-.layout {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gainsboro;
-}
 
 
-@media screen and (max-width: 1050px) {
-    .crudView {
-        width: 90%;
-    }
-
-}
-
-
-@media screen and (max-width: 985px) {
-    .crudView {
-        width: 90%;
-       
-    }
-}
-
-@media screen and (max-width: 372px) {
-   .divDatetime {
-       margin-right: 20px;
-       width: 40%;
-   }
-}
 
 
 

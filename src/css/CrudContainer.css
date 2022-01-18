@@ -1,14 +1,16 @@
 .CrudContainer {
-    width: 45%;
+    width: 100%;
     height: 100%;
     background-color: white ;
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 800px;
 }
 
 @media screen and (max-width: 1280px) {
    .CrudContainer {
        width: 100%;
+       overflow: hidden;
    } 
 }

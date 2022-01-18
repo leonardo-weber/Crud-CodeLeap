@@ -5,17 +5,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;  
-    box-shadow: 1px 1px 5px black;  
-}
-
-.divH1 {
-    width: 50%;
-    margin-left: 30px;
-    display: inline-block;
-    overflow-wrap:break-word;
+    padding: 0px 28.75px 0px 30px;
+    box-sizing: border-box;
 }
 
 .header h1 {
+    width: 75%;
+    margin: 24px 350.75px 24px 0px;
     font-style: normal;
     font-weight: bold;
     font-size: 22px;

@@ -184,34 +184,26 @@ export default function CrudOperations () {
                     <Header title = {post.title}>   
                         {username === post.username ? (
                             <>
-                                <div className="buttonDiv">
-                                    <button className='buttonEdit ' onClick={() => loadPost(post)}>
-                                        <FontAwesomeIcon  icon={faEdit} size='lg'>
+                                <button className='buttonDelete' onClick={() => deleteData(post)}>
+                                    <FontAwesomeIcon icon={faTrash} size='lg'>
 
-                                        </FontAwesomeIcon> 
-                                    </button>
-                                    <button className='buttonDelete' onClick={() => deleteData(post)}>
-                                        <FontAwesomeIcon icon={faTrash} size='lg'>
+                                    </FontAwesomeIcon>
+                                </button>         
+                                <button className='buttonEdit' onClick={() => loadPost(post)}>
+                                    <FontAwesomeIcon  icon={faEdit} size='lg'>
 
-                                        </FontAwesomeIcon>
-                                    </button>   
-                                </div>
+                                    </FontAwesomeIcon> 
+                                </button>
                          </>
                         ) : null}
                     </Header> 
                     
-                    <div className="divDatetime">
-                         <p> {moment(post.created_datetime).fromNow()}</p>
-                    </div>
-
-                    <div className="divUsername">
-                        <p >@{post.username} </p>
-                    </div>
-
-
-                    <div className="divContent">
-                        <p> {post.content} </p>
-                    </div>
+                         <div className="divInlineElements">
+                            <p id='username'>@{post.username} </p>
+                            <p id='datetime'> {moment(post.created_datetime).fromNow()}</p>
+                         </div>
+                         <p id='content'> {post.content} </p>
+            
                 </div>
             )
         })
@@ -232,11 +224,8 @@ export default function CrudOperations () {
            <DeleteComponent cancelClick = {() => handleNotDelete()} deleteClick = {() => handleDelete()} />
         ) : null}
 
-        <div className="previousAndNextButton">
             <button className='pageButton' id = 'previousPage' onClick={() => previousPage()}> Previous Page </button>
             <button className='pageButton' id ='nextPage' onClick={() => nextPage()}> Next Page </button>
-        </div>
-        
         </>
 
 

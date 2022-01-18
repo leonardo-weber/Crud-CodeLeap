@@ -1,71 +1,28 @@
 .createPost {
     width: 90%;
     height: 349px;
+    padding: 0px 30px;
     box-shadow: 2px 2px 5px black;
+    box-sizing: border-box;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
-}
-
-.divH4 {
-    width: 80%;
-    height: 70px;
-    margin-left: 30px;
-    display: flex;
-    justify-content: left;
-}
-
-.divTitleLabel {
-    margin-left: 30px;
-    display: flex;
-    justify-content: left;
-    
-}
-
-.divInputTitle {
-    margin-left: 30px;
-    display: flex;
-    justify-content: left;
-    width: 100%;
-}
-
-.divContentLabel {
-    margin-left: 30px;
-    margin-top: 19px;
-    display: flex;
-    justify-content: left;
-    width: 100%;
-    
-}
-
-.divContentInput {
-    margin-left: 30px;
-    margin-top: 7px;
-    display: flex;
-    justify-content: left;
-    width: 100%;
-    white-space: pre-wrap;
-}
-
-.divCreateButton {
-    width: 94%;
-    display: flex;
-    justify-content:flex-end;
-    margin-top: 20px;
+    margin: 44px 39px 34px 38px;
 }
 
 .createPost h4 {
+    width: 100%;
+    margin: 23px 394px 34px 0px;
     font-size: 22px;
 }
 
 .createPost #titleLabel {
-    margin-top: 5px;
+    margin: 0px 660px 7px 1px;
 }
 
 .createPost #inputTitle {
-    margin-top: 7px;
-    width: 90%;
+    margin: 0px 34px 19px 0px;
+    width: 100%;
     height: 28px;
     background: #FFFFFF;
     border: 1px solid #777777;
@@ -73,14 +30,25 @@
     border-radius: 4px;
 }
 
+.createPost #contentLabel {
+    margin: 0px 635px 7px 1px;
+}
 
 .createPost #inputContent {
-    width: 90%;
+    width: 100%;
     height: 74px;
+    margin: 0px 34px 35px 0px;
     border: 1px solid #777777;
     box-sizing: border-box;
     border-radius: 4px;
     resize: none;
+}
+
+#divButton {
+    margin: 0px 34px 29px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .createPost #button {
@@ -94,124 +62,5 @@
     line-height: 19px;
     border-radius: 5px;
 }
-
-@media screen and (max-width: 3201px) {
-    .createPost #inputTitle {
-        width: 94%;
-    }
-
-    .createPost #inputContent {
-        width: 94%;
-    }
-
-    .createPost .divCreateButton {
-        width: 97%;
-    } 
-}
-
-@media screen and (max-width: 2400px) {
-    .createPost #inputTitle {
-        width: 92%;
-    }
-
-    .createPost #inputContent {
-        width: 92%;
-    }
-
-    .createPost .divCreateButton {
-        width: 95%;
-    } 
-}
-
-@media screen and (max-width: 1300px) {
-    .createPost #inputTitle {
-        width: 85%;
-    }
-
-    .createPost #inputContent {
-        width: 85%;
-    }
-
-    .createPost .divCreateButton {
-        width: 91%;
-    } 
-}
-
-@media screen and (max-width: 1280px) {
-    .createPost #inputTitle {
-        width: 94%;
-    }
-
-    .createPost #inputContent {
-        width: 94%;
-    }
-    .createPost .divCreateButton {
-        width: 96.5%;
-    } 
- }
-
- @media screen and (max-width: 1110px) {
-    .createPost #inputTitle {
-        width: 92%;
-    }
-
-    .createPost #inputContent {
-        width: 92%;
-    }
-    .createPost .divCreateButton {
-        width: 95%;
-    } 
- }
-
-
- @media screen and (max-width: 855px) {
-    .createPost #inputTitle {
-        width: 88%;
-    }
-
-    .createPost #inputContent {
-        width: 88%;
-    }
-    .createPost .divCreateButton {
-        width: 93%;
-    } 
- }
-
- @media screen and (max-width: 500px) {
-    .createPost #inputTitle {
-        width: 84%;
-    }
-
-    .createPost #inputContent {
-        width: 84%;
-    }
-    .createPost .divCreateButton {
-        width: 90%;
-    } 
- }
-
-
- @media screen and (max-width: 450px) {
-    .createPost .divCreateButton {
-       width: 89%;
-    } 
-
-    .createPost #inputTitle {
-        width: 82%;
-
-    }
-
-    .createPost #inputContent {
-        width: 82%;
-    }
- }
-
-
- @media screen and (max-width: 350px) {
-    .createPost .divCreateButton {
-       width: 91%;
-    } 
- }
-
 
 

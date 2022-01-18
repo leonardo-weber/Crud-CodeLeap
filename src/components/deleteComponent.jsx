@@ -3,7 +3,7 @@ import '../css/deleteComponent.css'
 
 export default function DeleteComponent(props) {
     return (
-        <div className="layout"> 
+        <div id='deleteBackground'> 
             <div className='DeleteComponent'> 
                 <p> Are you sure you want to delete this item? </p>
                 <div className="buttonDiv"> 

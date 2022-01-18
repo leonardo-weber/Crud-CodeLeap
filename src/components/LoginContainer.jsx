@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 export default function LoginContainer (props) {
 
-   const username = useSelector(state => state['reduxData'].username)
+   const username = useSelector(state => state.reduxData.username)
 
     return (
         <div className='LoginContainer'>

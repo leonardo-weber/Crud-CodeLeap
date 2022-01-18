@@ -3,7 +3,7 @@ import '../css/editComponent.css'
 
 export default function EditComponent(props) {
     return (
-        <div className="layout"> 
+        <div id='editBackground'> 
                 <div id = 'editComponent' className='editComponent'>
                     <p> Edit item </p>  
                     <label id = 'titleLabel'> Title </label>

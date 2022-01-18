@@ -3,7 +3,7 @@ import '../css/LoginLayout.css'
 
 export default function LoginLayout(props) {
     return (
-        <div className='layout'>
+        <div className='loginLayout'>
             {props.children}
         </div>
     )
