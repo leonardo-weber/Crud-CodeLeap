@@ -2,6 +2,7 @@
     width: 90%;
     margin: 0px 39px 45px 38px;
     border: 1px solid black; 
+    box-shadow: 2px 2px 5px black;
 }
 
 .divInlineElements {
@@ -36,7 +37,7 @@
     background-color: #000;
     color: white;
     border: none;
-    margin: 23.75px 33px 23.75px 205.25px;
+    margin: 23.75px 33px 23.75px 179px;
     cursor: pointer;
   
 }
@@ -69,7 +70,8 @@
 }
 
 
-
-
-
-
+#buttonDeactivated {
+    background-color: gainsboro;
+    border: gainsboro;
+    cursor: not-allowed;
+}

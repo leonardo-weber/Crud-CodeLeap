@@ -10,9 +10,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setIdentifier } from '../redux/userSlice';
 import { useState, useEffect } from 'react/cjs/react.development'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit'
-import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
+import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa'
 import CreatePost from './createPost'
 import EditComponent from './editComponent'
 import DeleteComponent from './deleteComponent'
@@ -185,14 +183,10 @@ export default function CrudOperations () {
                         {username === post.username ? (
                             <>
                                 <button className='buttonDelete' onClick={() => deleteData(post)}>
-                                    <FontAwesomeIcon icon={faTrash} size='lg'>
-
-                                    </FontAwesomeIcon>
+                                    <FaRegTrashAlt size={22} />
                                 </button>         
                                 <button className='buttonEdit' onClick={() => loadPost(post)}>
-                                    <FontAwesomeIcon  icon={faEdit} size='lg'>
-
-                                    </FontAwesomeIcon> 
+                                    <FaRegEdit size={25} />
                                 </button>
                          </>
                         ) : null}

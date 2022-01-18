@@ -47,6 +47,12 @@
     line-height: 19px;
 }
 
+#buttonDeactivated {
+    background-color: gainsboro;
+    border: gainsboro;
+    cursor: not-allowed;
+}
+
 @media screen and (max-width: 542px) {
     .LoginContainer {
         width: 400px;

@@ -2,8 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react/cjs/react.development';
 import { setUsername } from '../redux/userSlice';
 import LoginContainer from '../components/LoginContainer';
-
-
+import '../css/LoginContainer.css'
 
 export default function Login (props) {
 
@@ -11,14 +10,12 @@ export default function Login (props) {
   const dispatch = useDispatch()
 
   const handleLogin = () => {
-    if (username === '') {
-      alert('You must type in a username in order to log in')
-    } else {
+    if (username.length !== 0) {
       dispatch(setUsername(username))
     }
   }
 
   return (
-     <LoginContainer onChange={e => setUserName(e.target.value) } value={username} onClick = {handleLogin}/>
+     <LoginContainer buttonID={username.length === 0 ? 'buttonDeactivated' : null} onChange={e => setUserName(e.target.value) } value={username} onClick = {handleLogin}/>
     )
 }
