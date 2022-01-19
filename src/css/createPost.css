@@ -51,7 +51,7 @@
     justify-content: flex-end;
 }
 
-.createPost #button {
+.createPost .button {
     width: 111px;
     height: 33px;
     background-color: #000;
@@ -63,4 +63,9 @@
     border-radius: 5px;
 }
 
+#buttonNotActive {
+    background-color: gainsboro;
+    border: none;
+    cursor: not-allowed;
+}
 

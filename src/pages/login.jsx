@@ -4,7 +4,7 @@ import { setUsername } from '../redux/userSlice';
 import LoginContainer from '../components/LoginContainer';
 import '../css/LoginContainer.css'
 
-export default function Login (props) {
+export default function Login () {
 
   const [username, setUserName] = useState('')
   const dispatch = useDispatch()
@@ -15,7 +15,9 @@ export default function Login (props) {
     }
   }
 
+  const buttonID = username.length < 3 ? 'buttonDeactivated' : null
+
   return (
-     <LoginContainer buttonID={username.length === 0 ? 'buttonDeactivated' : null} onChange={e => setUserName(e.target.value) } value={username} onClick = {handleLogin}/>
-    )
+    <LoginContainer buttonID={buttonID} onChange={e => setUserName(e.target.value) } value={username} onClick = {handleLogin}/>
+  )
 }

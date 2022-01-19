@@ -10,19 +10,19 @@ import { useSelector } from 'react-redux';
 export default function App() {  
   
   
-  const validUsername = useSelector(state => state['reduxData'].validUsername)
+  const validUsername = useSelector(state => state.reduxData.validUsername)
   
   return (    
     <>
-   {validUsername === true ? (
+      {validUsername === true ? (
         <CrudLayout>
           <Crud> </Crud>
         </CrudLayout>
-    ) : (
-      <LoginLayout> 
-        <Login> </Login>
-      </LoginLayout>
-    )}
-  </> 
+      ) : (
+        <LoginLayout> 
+          <Login> </Login>
+        </LoginLayout>
+      )}
+    </> 
   );
-  }
+}

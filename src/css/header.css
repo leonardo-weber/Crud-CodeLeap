@@ -3,17 +3,23 @@
     background-color: #000;
     color: white;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;  
+    justify-content: space-between;  
     padding: 0px 28.75px 0px 30px;
     box-sizing: border-box;
+    overflow-wrap: break-word;
 }
 
+.divH1 {
+    width: 40%;
+}
+
+
 .header h1 {
-    width: 75%;
-    margin: 24px 350.75px 24px 0px;
+    width: 100%;
+    margin: 24px 0px 24px 0px;
     font-style: normal;
     font-weight: bold;
     font-size: 22px;
     line-height: 26px;
+
 }

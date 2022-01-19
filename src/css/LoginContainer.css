@@ -1,10 +1,13 @@
 .LoginContainer {
     height: 220px;
-    width: 500px;
+    width: 90%;
     background-color: #fff;
     box-shadow: 1px 1px 10px gray;
     box-sizing: border-box;
     border-radius: 15px;
+    max-width: 500px;
+    padding-left: 31px;
+    padding-right: 25px;
 }
 
 .LoginContainer p {
@@ -12,39 +15,42 @@
     font-weight: bold;
     font-size: 22px;
     line-height: 26px;
-    margin-left: 32px;
+    margin: 28px 130px 30px 1px;
+    width: 100%;
+    height: 500;
 }
 
 .LoginContainer label {
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
-    line-height: 19px;
-    margin-left: 32px;
+    margin: 0px 244px 0px 1px;
 }
 
 .LoginContainer input {
-    width: 444px;
+    width: 100%;
     height: 28px;
+    margin: 13px 0px 20px 0px;
     background: #FFFFFF;
     border: 1px solid #777777;
     box-sizing: border-box;
     border-radius: 4px;
-    margin-left: 31px;
-    margin-top: 13px;
+}
+
+.divEnterButton {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .LoginContainer button {
     width: 111px;
     height: 33px;
-    margin-top: 20px;
-    margin-left: 364px;
     background-color: black;
     color: white;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
-    line-height: 19px;
 }
 
 #buttonDeactivated {
@@ -53,128 +59,19 @@
     cursor: not-allowed;
 }
 
-@media screen and (max-width: 542px) {
-    .LoginContainer {
-        width: 400px;
-    }
 
+@media screen and (max-width: 550px) {
     .LoginContainer p {
-        font-size: 18px;
-    }
-
-    .LoginContainer input {
-        width: 350px;
-        margin-left: 25px;
-    }
-
-    .LoginContainer button {
-        margin-left: 265px;
-        margin-top: 30px;
-    }
-}
-
-@media screen and (max-width: 420px) {
-    .LoginContainer {
-        width: 350px;
-    }
-
-    .LoginContainer p {
-        font-size: 17px;
-    }
-
-    .LoginContainer input {
-        width: 310px;
-        margin-left: 25px;
-    }
-
-    .LoginContainer button {
-        margin-left: 211px;
-        margin-top: 30px;
+        font-size: 20px;
     }
 }
 
 @media screen and (max-width: 370px) {
-    .LoginContainer {
-        width: 330px;
-    }
+  .LoginContainer {
+      height: 270px;
+  }
 
-    .LoginContainer p {
-        font-size: 15px;
-    }
-
-    .LoginContainer input {
-        width: 295px;
-        margin-left: 25px;
-    }
-
-    .LoginContainer button {
-        margin-left: 195px;
-        margin-top: 30px;
-    }
-}
-
-
-@media screen and (max-width: 340px) {
-    .LoginContainer {
-        width: 300px;
-    }
-
-    .LoginContainer p {
-        font-size: 15px;
-    }
-
-    .LoginContainer input {
-        width: 255px;
-        margin-left: 25px;
-    }
-
-    .LoginContainer button {
-        margin-left: 170px;
-        margin-top: 30px;
-    }
-}
-
-@media screen and (max-width: 280px) {
-    .LoginContainer {
-        width: 250px;
-    }
-
-    .LoginContainer p {
-        font-size: 13px;
-    }
-
-    .LoginContainer input {
-        width: 200px;
-        margin-left: 25px;
-    }
-
-    .LoginContainer button {
-        margin-left: 114px;
-        margin-top: 30px;
-    }
-}
-
-@media screen and (max-height: 240px) {
-    .LoginContainer {
-        height: 200px;
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media screen and (max-height: 208px) {
-    .LoginContainer {
-        height: 170px;
-        display: flex;
-        flex-direction: column;
-    }
-    
-
-    .LoginContainer button {
-        margin-left: 350px;
-        margin-top: 8px;
-        height: 25px;
-    }
-
-
+  .LoginContainer p {
+      margin-bottom: 15px;
+  }
 }

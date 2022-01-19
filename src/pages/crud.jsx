@@ -7,14 +7,14 @@ import CrudContainer from '../components/CrudContainer'
 
 
 
-export default function Crud (props) {
+export default function Crud () {
 
-    return (
-        <CrudLayout>
-            <CrudContainer> 
-                <Header title = 'CodeLeap Network'> </Header>
-                <CrudOperations> </CrudOperations> 
-            </CrudContainer>               
-       </CrudLayout>
-    )
+  return (
+    <CrudLayout>
+      <CrudContainer> 
+        <Header title = 'CodeLeap Network'> </Header>
+        <CrudOperations> </CrudOperations> 
+      </CrudContainer>               
+    </CrudLayout>
+  )
 }

@@ -30,6 +30,7 @@
     color: white;
     border: none;
     cursor: pointer;   
+    margin: 23.75px 0px 23.75px 33px;
 
 }
 
@@ -37,9 +38,23 @@
     background-color: #000;
     color: white;
     border: none;
-    margin: 23.75px 33px 23.75px 179px;
+    margin: 23.75px 0px 23.75px 300px;
     cursor: pointer;
-  
+    display: block;  
+} 
+
+.teste {
+    width: 180px;
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.divPageButton {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 45px;
 }
 
 .pageButton {

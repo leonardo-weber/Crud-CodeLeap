@@ -5,7 +5,7 @@ import setIdentifier from './userSlice'
 
 
 export default configureStore({
-    reducer: {
-      reduxData: setUsername, setIdentifier
-    }
+  reducer: {
+    reduxData: setUsername, setIdentifier,
+  },
 })
