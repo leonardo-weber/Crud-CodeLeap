@@ -10,6 +10,30 @@
     justify-content: space-between;
 }
 
+.divUsername {
+    width: 60%;
+    overflow-wrap: break-word;
+}
+
+.divDatetime {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.divContent {
+    margin-left: 30px;
+    margin-right: 31px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-start;
+    overflow-wrap: break-word;
+}
+
+#content {  
+    width: 100%;
+}
+
 #datetime {
    margin-top: 23px;
    margin-right: 25px;
@@ -18,11 +42,6 @@
 #username {
   margin-top: 23px;
   margin-left: 30px;
-}
-
-#content {
-    margin: 18px 31px 57px 30px;
-
 }
 
 .buttonEdit {
@@ -43,8 +62,8 @@
     display: block;  
 } 
 
-.teste {
-    width: 180px;
+.deleteEditDiv {
+    width: 100px;
     height: 80px;
     display: flex;
     justify-content: flex-end;
@@ -67,8 +86,8 @@
     box-shadow: 1px 1px 5px #000;
     display: inline;
     font-size: 15px;
-    margin-left: 15px;
     border-radius: 5px;
+    margin: 5px;
 }
 
 .pageButton:active {

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-quotes */
 /* eslint-disable max-len */
 import '../css/createPost.css'
-import '../css/crudRender.css'
+import '../css/crudOperations.css'
 import '../css/deleteComponent.css'
 import '../css/editComponent.css'
 import axios from 'axios'
@@ -55,27 +55,32 @@ export default function CrudOperations () {
       .then(resp => {
         setList(resp.data.results)
       })
-      .catch(e => console.log('erro: ', e))
+      .catch(() => console.log('Error'))
   }, [])
 
   function postData () {
-    axios.post(apiURL, post)
-      .then(resp => {
-        const newList = updateList(resp.data)
-        setList(newList)
-      })
-      .catch(e => console.log(e))
-    setPost(initialState) 
+    console.log(username)
+    if (post.title.length && post.content.length >= 3) {
+      axios.post(apiURL, post)
+        .then(resp => {
+          const newList = updateList(resp.data)
+          setList(newList)
+        })
+        .catch(e => console.log(e))
+      setPost(initialState) 
+    }
   }
      
   function patchData () {
-    axios.patch(`${apiURL}${identifier}/`, post )
-      .then(resp => {
-        const newList = updateList(resp.data)
-        setList(newList)
-        setShowEditComponent(false)
-      })      
-    setPost(initialState)
+    if (post.title.length && post.content.length >=3) {
+      axios.patch(`${apiURL}${identifier}/`, post )
+        .then(resp => {
+          const newList = updateList(resp.data)
+          setList(newList)
+          setShowEditComponent(false)
+        })      
+      setPost(initialState)
+    }
   }   
      
   function deleteData(post) {
@@ -173,7 +178,7 @@ export default function CrudOperations () {
           <Header title = {post.title}>   
             {username === post.username ? (
               <>
-                <div className="teste">
+                <div className="deleteEditDiv">
                   <button className='buttonDelete' onClick={() => deleteData(post)}>
                     <FaRegTrashAlt size={22} />
                   </button>         
@@ -187,10 +192,17 @@ export default function CrudOperations () {
           </Header> 
                     
           <div className="divInlineElements">
-            <p id='username'>@{post.username} </p>
-            <p id='datetime'> {moment(post.created_datetime).fromNow()}</p>
+            <div className="divUsername">
+              <p id='username'>@{post.username} </p>
+            </div>
+
+            <div className="divDatetime">
+              <p id='datetime'> {moment(post.created_datetime).fromNow()}</p>
+            </div>
           </div>
-          <p id='content'> {post.content} </p>  
+          <div className="divContent">
+            <p id='content'> {post.content} </p>  
+          </div>
         </div>
       )
     })
@@ -198,7 +210,7 @@ export default function CrudOperations () {
 
   return (
     <>
-      <CreatePost createButtonID={post.title.length < 3 || post.content.length < 3 ? 'buttonNotActive' : null} onChangeTitle = {e => updateInputField(e)} onChangeContent = {e => updateContentField(e)} TitleValue = {post.title} ContentValue = {post.content} onClick={e => postData(e)} ButtonName={'CREATE'} />
+      <CreatePost createButtonID={post.title.length < 3 || post.content.length < 3 ? 'buttonNotActive' : null} onChangeTitle = {e => updateInputField(e)} onChangeContent = {e => updateContentField(e)} TitleValue = {post.title} ContentValue = {post.content} onClick={e => postData(e)} />
 
       {renderData()}
         

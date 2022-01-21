@@ -10,6 +10,13 @@
     margin: 44px 39px 34px 38px;
 }
 
+#divButton {
+    margin: 0px 34px 29px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .createPost h4 {
     width: 100%;
     margin: 23px 394px 34px 0px;
@@ -35,20 +42,12 @@
 }
 
 .createPost #inputContent {
-    width: 100%;
+    width: 99%;
     height: 74px;
     margin: 0px 34px 35px 0px;
     border: 1px solid #777777;
-    box-sizing: border-box;
     border-radius: 4px;
     resize: none;
-}
-
-#divButton {
-    margin: 0px 34px 29px 0px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
 }
 
 .createPost .button {
@@ -69,3 +68,6 @@
     cursor: not-allowed;
 }
 
+input, textarea::placeholder {
+    font-size: 12px;
+}

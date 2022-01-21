@@ -10,7 +10,7 @@ export default function Login () {
   const dispatch = useDispatch()
 
   const handleLogin = () => {
-    if (username.length !== 0) {
+    if (username.length >= 3) {
       dispatch(setUsername(username))
     }
   }

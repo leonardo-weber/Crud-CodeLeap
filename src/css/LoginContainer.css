@@ -2,7 +2,7 @@
     height: 220px;
     width: 90%;
     background-color: #fff;
-    box-shadow: 1px 1px 10px gray;
+    box-shadow: 1px 1px 2px gray;
     box-sizing: border-box;
     border-radius: 15px;
     max-width: 500px;
@@ -59,19 +59,18 @@
     cursor: not-allowed;
 }
 
-
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 401px) {
     .LoginContainer p {
-        font-size: 20px;
+        margin-bottom: 4px;
     }
 }
 
-@media screen and (max-width: 370px) {
-  .LoginContainer {
-      height: 270px;
-  }
-
-  .LoginContainer p {
-      margin-bottom: 15px;
-  }
+@media screen and (max-width: 300px) {
+    .LoginContainer p {
+        margin-top: 25px;
+        font-size: 17px;
+    }
+    .LoginContainer label {
+        font-size: 15px;
+    }
 }
